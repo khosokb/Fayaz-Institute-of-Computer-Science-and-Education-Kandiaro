@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form 2025 - Fayaz Institute</title>
+    <style>
+        /* --- General Document Styling --- */
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        /* The container mimics an A4 paper size for printing */
+        .form-container {
+            width: 205mm;
+            min-height: 290mm;
+            background-color: white;
+            padding: 15px 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 10px 0;
+        }
+
+        /* --- Header and Logo --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .header-left, .header-right {
+            width: 15%;
+            text-align: center;
+        }
+
+        .header-center {
+            width: 70%;
+            text-align: center;
+        }
+
+        .header-center h1 {
+            font-size: 24px;
+            color: #000;
+            margin: 0;
+        }
+
+        .header-center p {
+            font-size: 12px;
+            margin: 3px 0 0 0;
+            line-height: 1.2;
+        }
+        
+        /* New Image Styling for Logos: BORDER REMOVED */
+        .logo-img {
+            height: 80px; 
+            width: auto;
+            border: none; /* Removed Border */
+            padding: 2px;
+            box-sizing: content-box;
+        }
+
+
+        /* --- Admission Title & Registration --- */
+        .admission-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .admission-title .reg-no {
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .admission-title .reg-no label {
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .admission-title .reg-no .input-line {
+            border: none;
+            border-bottom: 1px solid #000;
+            flex-grow: 1;
+            padding: 1px;
+            font-size: 13px;
+        }
+
+        .admission-title h2 {
+            font-size: 18px;
+            background-color: #ddd;
+            display: inline-block;
+            padding: 3px 15px;
+            margin: 0;
+            border: 1px solid #000;
+        }
+        
+        /* --- Form Fields --- */
+        .form-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: flex-end;
+            font-size: 13px;
+        }
+        
+        .field {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .field:last-child {
+            padding-right: 0;
+        }
+
+        .field label {
+            font-weight: bold;
+            display: inline-block;
+            width: 90px;
+        }
+
+        .field input[type="text"], 
+        .field input[type="email"], 
+        .field input[type="tel"],
+        .field input[type="date"] {
+            border: none;
+            border-bottom: 1px solid #000;
+            flex-grow: 1;
+            padding: 1px;
+            font-size: 13px;
+            width: calc(100% - 95px);
+        }
+        
+        /* Special styles for gender */
+        .gender-select {
+            display: flex;
+            align-items: center;
+        }
+
+        .gender-select label {
+            font-weight: normal;
+            margin-right: 10px;
+            width: auto;
+            font-size: 13px;
+        }
+        
+        .gender-select input[type="checkbox"] {
+            margin-left: 3px;
+            transform: scale(1.1);
+        }
+
+        /* --- Photo Upload Area --- */
+        .photo-upload-area {
+            width: 90px;
+            height: 110px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 1.1;
+            font-size: 11px;
+            margin-left: auto;
+            margin-right: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-upload-area img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .photo-upload-area input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .photo-upload-area .upload-text {
+            color: #555;
+            padding: 3px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* --- Courses Section --- */
+        .courses-section {
+            border: 1px solid #000;
+            padding: 8px;
+            margin: 15px 0;
+        }
+
+        .courses-section h3 {
+            text-align: center;
+            font-size: 15px;
+            background-color: #ddd;
+            padding: 3px 0;
+            margin: -8px -8px 8px -8px;
+        }
+
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 0;
+            font-size: 13px;
+        }
+
+        .course-item .details {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .course-item .course-name {
+            font-weight: bold;
+            width: 60%;
+        }
+
+        .course-item .duration {
+            width: 30%;
+        }
+
+        /* --- Checkbox Styling (Custom Look) --- */
+        .course-item input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            
+            width: 16px;
+            height: 16px;
+            border: 1px solid #000;
+            cursor: pointer;
+            background-color: transparent; 
+            margin: 0;
+            padding: 0;
+            position: relative;
+            top: 1px;
+        }
+
+        .course-item input[type="checkbox"]:checked::after {
+            content: '✓'; 
+            font-size: 14px;
+            color: #000;
+            position: absolute;
+            top: -2px; 
+            left: 2px; 
+        }
+        
+        .signature-line {
+            text-align: right;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .signature-line .line {
+            display: inline-block;
+            width: 180px;
+            border-bottom: 1px solid #000;
+            margin-left: 8px;
+        }
+
+        /* --- Office Use Only --- */
+        .office-use {
+            border: 1px solid #000;
+            margin-top: 15px;
+            padding: 8px;
+            font-size: 13px;
+        }
+
+        .office-use h4 {
+            text-align: center;
+            margin-top: 0;
+            background-color: #ddd;
+            padding: 2px 0;
+            margin: -8px -8px 8px -8px;
+        }
+
+        .office-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .office-field {
+            flex-basis: 48%;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .office-field label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .office-field .line {
+            flex-grow: 1;
+            border-bottom: 1px solid #000;
+            padding: 1px;
+        }
+        
+        /* --- Download Buttons (Hidden when printing) --- */
+        .button-group {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .download-button {
+            padding: 8px 15px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .pdf-button {
+            background-color: #dc3545;
+        }
+        
+        .pdf-button:hover {
+            background-color: #c82333;
+        }
+
+        .word-button {
+            background-color: #007bff;
+        }
+        
+        .word-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Media Query for Printing: Critical for single-page fit */
+        @media print {
+            .button-group {
+                display: none;
+            }
+            body {
+                background-color: white;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .form-container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 10px 15px !important;
+                border: none !important;
+                min-height: 297mm;
+            }
+            .photo-upload-area img {
+                display: block !important;
+            }
+            .photo-upload-area .upload-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-group">
+        <button class="download-button pdf-button" onclick="downloadPDF()">Download as PDF</button>
+        <button class="download-button word-button" onclick="downloadWord()">Download as DOCX</button>
+    </div>
+
+    <div class="form-container" id="printable-form">
+        <div class="header">
+            <div class="header-left">
+                <img class="logo-img" src="C:\Users\khuda\OneDrive\Desktop\sbte.jpg" alt="Government Seal">
+            </div>
+            <div class="header-center">
+                <h1>Fayaz Institute of Computer Science & Education Kandiaro</h1>
+                <p>Registered With: Sindh Technical Education & Vocational Training Authority (STEVTA)<br>
+                Affiliation: Sindh Board of Technical Education Karachi & Trade Testing Board (Sindh)</p>
+            </div>
+            <div class="header-right">
+                <img class="logo-img" src="C:\Users\khuda\OneDrive\Desktop\sbte.jpg" alt="SBTE Logo">
+            </div>
+        </div>
+
+        <div class="admission-title">
+            <div class="reg-no">
+                <label>Registration No:</label>
+                <div class="input-line"></div>
+            </div>
+            <h2>ADMISSION FORM 2025</h2>
+        </div>
+
+        <div class="form-row" style="margin-top: 15px;">
+            <div class="field" style="flex-basis: 60%;">
+                <label>FULL NAME:</label>
+                <input type="text" name="full_name" value="">
+            </div>
+            <div class="field" style="flex-basis: 40%; display: flex; align-items: baseline;">
+                <label style="width: 50px;">CASTE:</label>
+                <input type="text" name="caste" style="width: calc(100% - 55px);" value="">
+            </div>
+            
+            <div class="photo-upload-area">
+                <img id="photo-preview" src="#" alt="Student Photo Preview" style="display: none;">
+                <span class="upload-text">PASSPORT<br>SIZE<br>PHOTO<br>Click to Upload</span>
+                <input type="file" id="photo-upload" name="student_photo" accept="image/*">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field" style="flex-basis: 50%;">
+                <label>FATHER NAME:</label>
+                <input type="text" name="father_name" value="">
+            </div>
+            <div class="field" style="flex-basis: 50%;">
+                <label>GENDER:</label>
+                <div class="gender-select">
+                    <label>MALE<input type="checkbox" name="gender_male" value="male"></label>
+                    <label>FEMALE<input type="checkbox" name="gender_female" value="female"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field" style="flex-basis: 50%;">
+                <label>DATE OF BIRTH:</label>
+                <input type="date" name="dob">
+            </div>
+            <div class="field" style="flex-basis: 50%;">
+                <label>NATIONALITY:</label>
+                <input type="text" name="nationality" value="">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field" style="flex-basis: 50%;">
+                <label>RELIGION:</label>
+                <input type="text" name="religion" value="">
+            </div>
+            <div class="field" style="flex-basis: 50%;">
+                <label>WHATSAPP NO:</label>
+                <input type="tel" name="whatsapp_no" value="">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field" style="flex-basis: 50%;">
+                <label>CONTACT NO:</label>
+                <input type="tel" name="contact_no" value="">
+            </div>
+            <div class="field" style="flex-basis: 50%;">
+                <label>QUALIFICATION:</label>
+                <input type="text" name="qualification" value="">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field" style="flex-basis: 100%;">
+                <label>PRESENT ADDRESS:</label>
+                <input type="text" name="address" value="">
+            </div>
+        </div>
+
+        <div class="courses-section">
+            <h3>COURSES</h3>
+            <p style="text-align: center; font-size: 11px; margin-bottom: 8px;">Tick the course for Admission:</p>
+
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">1. DIPLOMA IN INFORMATION TECHNOLOGY</span>
+                    <span class="duration">12 MONTHS COURSE</span>
+                </div>
+                <input type="checkbox" name="course_dit">
+            </div>
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">2. CERTIFICATE IN INFORMATION TECHNOLOGY</span>
+                    <span class="duration">06 MONTHS COURSE</span>
+                </div>
+                <input type="checkbox" name="course_cit">
+            </div>
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">3. SHORT COURSE OF COMPUTER SCIENCE</span>
+                    <span class="duration">04 MONTHS COURSE</span>
+                </div>
+                <input type="checkbox" name="course_scs">
+            </div>
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">4. MS OFFICE, WORD, EXCEL, POWER POINT</span>
+                    <span class="duration">02 MONTHS COURSE</span>
+                </div>
+                <input type="checkbox" name="course_msoffice">
+            </div>
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">5. TYPING ENGLISH, URDU, SINDHI</span>
+                    <span class="duration">02 MONTHS COURSE</span>
+                </div>
+                <input type="checkbox" name="course_typing">
+            </div>
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">6. SPECIAL COURSE ALL SUBJECTS EXPERT</span>
+                    <span class="duration">02 MONTHS</span>
+                </div>
+                <input type="checkbox" name="course_special">
+            </div>
+            <div class="course-item">
+                <div class="details">
+                    <span class="course-name">7. TUITION IN WHICH CLASS ADMISSION</span>
+                    <span class="duration"></span>
+                </div>
+                <input type="checkbox" name="course_tuition">
+            </div>
+
+            <div class="signature-line">
+                Signature of Student:
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <div class="office-use">
+            <h4>For Office Use Only</h4>
+            <div class="office-row">
+                <div class="office-field">
+                    <label>Batch Name:</label><div class="line"></div>
+                </div>
+                <div class="office-field">
+                    <label>Principal Signature</label><div class="line" style="width: 150px;"></div>
+                </div>
+            </div>
+            <div class="office-row">
+                <div class="office-field">
+                    <label>Class Timing:</label><div class="line"></div>
+                </div>
+            </div>
+            <div class="office-row">
+                <div class="office-field">
+                    <label>Monthly Fees:</label><div class="line"></div>
+                </div>
+                <div class="office-field">
+                    <label>Admission Fees:</label><div class="line"></div>
+                </div>
+            </div>
+            <div class="office-row">
+                <div class="office-field" style="flex-basis: 100%;">
+                    <label>Date of Admission:</label><div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to trigger PDF download (using browser print)
+        function downloadPDF() {
+            window.print();
+        }
+
+        // Function to trigger Word (DOC/DOCX) download with formatting fixes
+        function downloadWord() {
+            const formElement = document.getElementById('printable-form');
+            
+            // Clone the form container
+            const content = formElement.cloneNode(true);
+
+            // --- CRITICAL STEP: Replace form inputs with static text that maintains width ---
+            content.querySelectorAll('input').forEach(input => {
+                let replacementHTML = '';
+                let value = input.value;
+                const computedWidth = input.style.width || 'calc(100% - 95px)';
+                
+                if (input.type === 'checkbox') {
+                    // For course checkboxes and gender
+                    value = input.checked ? '✓' : '';
+                    // Replicate the checkbox style using a simple border/span
+                    replacementHTML = `<span style="display:inline-block; width: 16px; height: 16px; border: 1px solid black; text-align: center; font-size: 13px; line-height: 1.1; position: relative; top: 1px;">${value}</span>`;
+                } else if (input.type === 'date' || input.type === 'text' || input.type === 'tel') {
+                    // For text inputs, replace with the value inside a styled span for the underline
+                    const placeholder = '...................................................';
+                    value = value || placeholder;
+                    
+                    // The inline style ensures the width is maintained when the input is removed
+                    replacementHTML = `<span style="border-bottom: 1px solid #000; display: inline-block; width: ${computedWidth}; padding: 1px; font-size: 13px; color: black; background: white;">${value}</span>`;
+                }
+                
+                if (replacementHTML !== '') {
+                    // Create a temporary element to hold the replacement HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = replacementHTML;
+                    
+                    // Replace the original input with the new static content
+                    if (input.parentNode) {
+                        input.parentNode.replaceChild(tempDiv.firstChild, input);
+                    }
+                }
+            });
+            
+            // Handle student photo: If an image is uploaded, ensure its base64 data is included
+            const imagePreview = content.querySelector('#photo-preview');
+            const imageContainer = content.querySelector('.photo-upload-area');
+            
+            if (imagePreview && imagePreview.src && imagePreview.style.display !== 'none') {
+                const imgTag = document.createElement('img');
+                imgTag.src = imagePreview.src;
+                // Important: Use fixed pixel sizes for Word stability
+                imgTag.style.width = '90px';
+                imgTag.style.height = '110px';
+                imgTag.style.border = '1px solid black';
+                
+                // Clear the container and append the image
+                imageContainer.innerHTML = '';
+                imageContainer.appendChild(imgTag);
+            } else if (imageContainer) {
+                 // If no image, ensure the box is just a box with a placeholder
+                 imageContainer.innerHTML = '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; line-height: 1.1;">[Photo not uploaded]</div>';
+            }
+
+
+            const filename = "Admission_Form_Fayaz_Institute.doc"; 
+            const htmlContent = content.outerHTML;
+
+            // ----------------------------------------------------
+            // Word-specific MIME types, headers, and CSS Overrides
+            // ----------------------------------------------------
+            const header = `
+            <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                  xmlns:w='urn:schemas-microsoft-com:office:word' 
+                  xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>Admission Form</title>
+                    <style>
+                        /* Copy existing styles */
+                        ${document.getElementsByTagName('style')[0].innerHTML}
+                        
+                        /* --- Word-Specific Layout Fixes (Overwrite 'flex' with 'float') --- */
+                        
+                        /* Ensure container respects A4 margins */
+                        .form-container {
+                            width: 180mm !important; 
+                            padding: 10px !important;
+                            box-shadow: none !important;
+                        }
+                        
+                        /* Convert flex row to a block/float container */
+                        .form-row {
+                            display: block !important;
+                            overflow: hidden; /* Clearfix effect */
+                            margin-bottom: 8px !important;
+                        }
+                        
+                        /* Use float for columns, giving explicit percentage widths */
+                        .field {
+                            float: left !important;
+                            width: 48% !important; 
+                            padding-right: 10px !important;
+                            box-sizing: border-box;
+                        }
+
+                        .form-row:last-child .field {
+                            width: 100% !important;
+                            float: none !important;
+                        }
+
+                        /* Fix for the floating photo area position */
+                        .photo-upload-area {
+                            float: right !important;
+                            position: relative !important;
+                            top: -120px; /* Pull it up to sit next to the name/caste fields */
+                            margin-right: 5px;
+                            margin-left: 0;
+                            line-height: 1.1 !important;
+                        }
+                        
+                        /* Specific widths for the first row elements */
+                        .form-row:first-of-type .field:first-child {
+                            width: 55% !important; /* Full Name field */
+                        }
+                         .form-row:first-of-type .field:nth-child(2) {
+                            width: 25% !important; /* Caste field */
+                        }
+
+                        /* Ensure the replacement span maintains the correct input width */
+                        .field span {
+                             border-bottom: 1px solid #000;
+                             display: inline-block;
+                             padding: 1px;
+                             font-size: 13px;
+                             width: calc(100% - 95px) !important; /* Standard field width for span replacement */
+                        }
+                        
+                        .field span[style*="width: calc(100% - 55px)"] {
+                            width: calc(100% - 55px) !important; /* Specific fix for CASTE field */
+                        }
+                        
+                    </style>
+                </head>
+                <body>`;
+            const footer = "</body></html>";
+            
+            const sourceHTML = header + htmlContent + footer;
+
+            // Create a Blob object from the HTML string
+            const blob = new Blob(['\ufeff', sourceHTML], {
+                type: 'application/msword'
+            });
+
+            // Create a download link and trigger the click
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            alert('Your form has been prepared for download as a Word document. Please enable editing in Word to view/edit.');
+        }
+
+
+        // JavaScript for image preview
+        document.getElementById('photo-upload').addEventListener('change', function(event) {
+            const [file] = event.target.files;
+            if (file) {
+                const preview = document.getElementById('photo-preview');
+                const uploadText = document.querySelector('.photo-upload-area .upload-text');
+                
+                // Read the file as a Data URL (base64) so it can be included in the Word document
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Show the image
+                    uploadText.style.display = 'none'; // Hide the upload text
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
