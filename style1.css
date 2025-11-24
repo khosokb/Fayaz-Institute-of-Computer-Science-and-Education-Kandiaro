@@ -1,0 +1,83 @@
+/* style.css content */
+
+/* 1. Global Reset & Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5; /* Light grey background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* 2. Card Container (The Login Box) */
+.login-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle 3D effect */
+    width: 100%;
+    max-width: 400px; /* Standard portal width */
+    text-align: center;
+}
+
+/* 3. Header/Title Styling */
+.login-container h1 {
+    color: #007bff; /* Primary blue color (like STS) */
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.login-container p {
+    color: #6c757d;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* 4. Form Styling */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Input Fields */
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important for padding/width calculation */
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 5. Button Styling */
+.login-btn {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #dc3545; /* STS-style red/maroon color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
